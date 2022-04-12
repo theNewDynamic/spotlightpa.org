@@ -1,8 +1,13 @@
-<div class="mt-4 plain-notification" data-ga-category="editors-pick">
+<div
+  class="mt-4 plain-notification"
+  data-ga-category="editors-pick"
+  style="background-color: {{ .backgroundColor }};"
+>
   <h1
-    class="title is-size-5 is-size-4-mobile has-text-centered has-text-danger is-uppercase"
+    class="title is-size-5 is-size-4-mobile has-text-centered is-uppercase"
+    style="color: {{ .labelColor }};"
   >
-    Editor’s Pick
+    {{ .title }}
   </h1>
 
   {{ partial "tile/ed-pix.html" . }}

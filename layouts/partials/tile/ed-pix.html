@@ -1,15 +1,16 @@
-{{ $params := partialCached "helper/page-params" .Page .RelPermalink }}
+{{ $page := .page }}
+{{ $params := .params }}
 
 
 <article class="mb-5">
-  {{ $name := .Page.Param "image" }}
-  {{ $credit := .Page.Param "image-credit" }}
-  {{ $description := .Page.Param "image-description" }}
+  {{ $name := $page.Param "image" }}
+  {{ $credit := $page.Param "image-credit" }}
+  {{ $description := $page.Param "image-description" }}
   {{ $imgOpts := dict
     "filename" $name
     "credit" $credit
     "description" $description
-    "link" .RelPermalink
+    "link" $params.link
     "widthRatio" 16
     "heightRatio" 9
     "sizeHint" "25vw"
@@ -20,10 +21,10 @@
   <h2 class="title is-4 is-spaced mt-2">
     <a
       class="has-text-black hover-underline"
-      href="{{ .RelPermalink }}"
+      href="{{ $params.link }}"
       data-ga-category="hed"
     >
-      {{ .LinkTitle }}
+      {{ $page.LinkTitle }}
     </a>
   </h2>
   {{ if $params.byline }}
@@ -31,7 +32,7 @@
       class="subtitle has-margin-top-negative-medium is-5 has-text-weight-normal"
     >
       <a
-        href="{{ .RelPermalink }}"
+        href="{{ $params.link }}"
         class="has-text-grey-dark hover-underline"
         data-ga-category="byline"
       >
